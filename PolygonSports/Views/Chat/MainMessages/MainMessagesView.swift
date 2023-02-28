@@ -106,18 +106,33 @@ struct MainMessagesView: View {
     
     var body: some View {
         NavigationView {
-            
-            VStack {
-                customNavBar
-                messagesView
+            ZStack {
                 
-                NavigationLink("", isActive: $shouldNavigateToChatLogView) {
-                    ChatLogView(vm: chatLogViewModel)
+                Color("backgroundColor")
+                    .ignoresSafeArea()
+                
+                VStack {
+                    VStack {
+                        customNavBar
+                        messagesView
+                        
+                        NavigationLink("", isActive: $shouldNavigateToChatLogView) {
+                            ChatLogView(vm: chatLogViewModel)
+                        }
+                    }
+                    //.overlay(
+                    //    newMessageButton, alignment: .bottom)
+                    .overlay {
+                        newMessageButton
+                            .vAlign(.bottom)
+                            .padding(.bottom, 110)
+                    }
+                    .navigationBarHidden(true)
+                    .padding(.top, 50)
+                    .padding(.bottom, 40)
                 }
             }
-            .overlay(
-                newMessageButton, alignment: .bottom)
-            .navigationBarHidden(true)
+            .ignoresSafeArea()
         }
     }
     
@@ -179,51 +194,57 @@ struct MainMessagesView: View {
     private var messagesView: some View {
         ScrollView {
             ForEach(vm.recentMessages) { recentMessage in
-                VStack {
-                    Button {
-                        let uid = FirebaseManager.shared.auth.currentUser?.uid == recentMessage.fromId ? recentMessage.toId : recentMessage.fromId
-                        
-                        self.chatUser = .init(id: uid, uid: uid, email: recentMessage.email, profileImageUrl: recentMessage.profileImageUrl)
-                        
-                        self.chatLogViewModel.chatUser = self.chatUser
-                        self.chatLogViewModel.fetchMessages()
-                        self.shouldNavigateToChatLogView.toggle()
-                    } label: {
-                        HStack(spacing: 16) {
-                            WebImage(url: URL(string: recentMessage.profileImageUrl))
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 64, height: 64)
-                                .clipped()
-                                .cornerRadius(64)
-                                .overlay(RoundedRectangle(cornerRadius: 64)
-                                            .stroke(Color.black, lineWidth: 1))
-                                .shadow(radius: 5)
-                            
-                            
-                            VStack(alignment: .leading, spacing: 8) {
-                                Text(recentMessage.username)
-                                    .font(.custom("LexendDeca-Regular", size: 16))
-                                    .foregroundColor(Color(.label))
-                                    .multilineTextAlignment(.leading)
-                                Text(recentMessage.text)
-                                    .font(.custom("LexendDeca-Regular", size: 14))
-                                    .foregroundColor(Color(.darkGray))
-                                    .multilineTextAlignment(.leading)
-                            }
-                            Spacer()
-                            
-                            Text(recentMessage.timeAgo)
-                                .font(.custom("LexendDeca-Regular", size: 14))
-                                .foregroundColor(Color(.label))
-                        }
-                    }
-
-
+                ZStack {
                     
-                    Divider()
-                        .padding(.vertical, 8)
-                }.padding(.horizontal)
+                    Capsule()
+                        .frame(height: 80)
+                        .foregroundColor(.white)
+                    
+                    VStack {
+                        Button {
+                            let uid = FirebaseManager.shared.auth.currentUser?.uid == recentMessage.fromId ? recentMessage.toId : recentMessage.fromId
+                            
+                            self.chatUser = .init(id: uid, uid: uid, email: recentMessage.email, profileImageUrl: recentMessage.profileImageUrl)
+                            
+                            self.chatLogViewModel.chatUser = self.chatUser
+                            self.chatLogViewModel.fetchMessages()
+                            self.shouldNavigateToChatLogView.toggle()
+                        } label: {
+                            HStack(spacing: 16) {
+                                WebImage(url: URL(string: recentMessage.profileImageUrl))
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 64, height: 64)
+                                    .clipped()
+                                    .cornerRadius(64)
+                                    .overlay(RoundedRectangle(cornerRadius: 64)
+                                                .stroke(Color.black, lineWidth: 1))
+                                    .shadow(radius: 5)
+                                
+                                
+                                VStack(alignment: .leading, spacing: 8) {
+                                    Text(recentMessage.username)
+                                        .font(.custom("LexendDeca-Regular", size: 16))
+                                        .foregroundColor(Color.black)
+                                        .multilineTextAlignment(.leading)
+                                    Text(recentMessage.text)
+                                        .font(.custom("LexendDeca-Regular", size: 14))
+                                        .foregroundColor(Color.gray)
+                                        .multilineTextAlignment(.leading)
+                                }
+                                Spacer()
+                                
+                                Text(recentMessage.timeAgo)
+                                    .font(.custom("LexendDeca-Regular", size: 14))
+                                    .foregroundColor(Color.gray)
+                            }
+                        }
+                    }.padding(.horizontal)
+                }
+                .padding(.leading, 15)
+                .padding(.trailing, 15)
+                .padding(.top, 5)
+                .padding(.bottom, 5)
                 
             }.padding(.bottom, 50)
         }
@@ -243,7 +264,7 @@ struct MainMessagesView: View {
             }
             .foregroundColor(.white)
             .padding(.vertical)
-                .background(Color.blue)
+            .background(LinearGradient(gradient: Gradient(colors: [.teal, .mint]), startPoint: .leading, endPoint: .topTrailing))
                 .cornerRadius(32)
                 .padding(.horizontal)
                 .shadow(radius: 15)

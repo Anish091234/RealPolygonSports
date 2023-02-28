@@ -22,6 +22,11 @@ struct Tournament: Identifiable, Codable, Equatable, Hashable {
     var group3: [String] = []
     var group1End: Int
     var group2End: Int
+    var address: String
+    var center: String
+    var group1UID: [String] = []
+    var group2UID: [String] = []
+    var group3UID: [String] = []
     
     enum CodingKeys: CodingKey {
         case id
@@ -37,6 +42,11 @@ struct Tournament: Identifiable, Codable, Equatable, Hashable {
         case group3
         case group1End
         case group2End
+        case address
+        case center
+        case group1UID
+        case group2UID
+        case group3UID
     }
 }
 

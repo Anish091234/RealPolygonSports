@@ -7,9 +7,10 @@
 
 import SwiftUI
 import Firebase
+import FirebaseMessaging
 
 class ChatLogViewModel: ObservableObject {
-    
+    @AppStorage("user_name") var userNameStored: String = ""
     @Published var chatText = ""
     @Published var errorMessage = ""
     
@@ -59,7 +60,7 @@ class ChatLogViewModel: ObservableObject {
             }
     }
     
-    func handleSend() {
+    func handleSend(firebaseToken: String) {
         print(chatText)
         guard let fromId = FirebaseManager.shared.auth.currentUser?.uid else { return }
         
@@ -101,6 +102,12 @@ class ChatLogViewModel: ObservableObject {
             
             print("Recipient saved message as well")
         }
+        
+        //MARK: Send Push Notification
+        
+        let sender = PushNotificationSender()
+        sender.sendPushNotification(to: firebaseToken, title: userNameStored, body: chatText)
+        print("Sent Push Notification")
     }
     
     private func persistRecentMessage() {
@@ -162,14 +169,8 @@ class ChatLogViewModel: ObservableObject {
 
 struct ChatLogView: View {
     
-//    let chatUser: ChatUser?
-//
-//    init(chatUser: ChatUser?) {
-//        self.chatUser = chatUser
-//        self.vm = .init(chatUser: chatUser)
-//    }
-    
     @ObservedObject var vm: ChatLogViewModel
+    @State var token: String = ""
     
     var body: some View {
         ZStack {
@@ -181,6 +182,39 @@ struct ChatLogView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onDisappear {
             vm.firestoreListener?.remove()
+        }
+        .task {
+            await getToken()
+        }
+    }
+    
+    func getToken() async {
+        // Filter with UID
+        
+        do {
+            let documents = try await Firestore.firestore().collection("Users")
+                .getDocuments()
+            
+            let users = try documents.documents.compactMap { doc -> User? in
+                try doc.data(as: User.self)
+            }
+            
+            for user in users {
+                if user.userUID == vm.chatUser?.uid {
+                    token = user.firebaseMessageToken
+                }
+            }
+            
+            print("TOKEN: \(token)")
+            
+            //await MainActor.run(body: {
+            //    token = users[0].firebaseMessageToken
+            //})
+            
+            
+        } catch {
+            print("Error")
+            print(error.localizedDescription)
         }
     }
     
@@ -231,7 +265,7 @@ struct ChatLogView: View {
             .frame(height: 40)
             
             Button {
-                vm.handleSend()
+                vm.handleSend(firebaseToken: token)
             } label: {
                 Text("Send")
                     .font(.custom("LexendDeca-Regular", size: 18))

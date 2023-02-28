@@ -28,6 +28,7 @@ struct TournamentCardView: View {
     @State var showError: Bool = false
     @State private var docListener: ListenerRegistration?
     @State var showSheet: Bool = false
+    @State private var alreadyJoinedTournament: Bool = false
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
@@ -35,8 +36,6 @@ struct TournamentCardView: View {
                 Text(tournament.title)
                     .font(.custom("LexendDeca-Regular", size: 15))
                     .fontWeight(.semibold)
-                Text("Created At: \(tournament.publishedDate.formatted(date: .numeric, time: .shortened))")
-                    .font(.custom("LexendDeca-Regular", size: 11))
                 
                 Text("Tournament Date: \(tournament.tournamentDate.formatted(date: .numeric, time: .shortened))")
                     .font(.custom("LexendDeca-Regular", size: 11))
@@ -54,19 +53,16 @@ struct TournamentCardView: View {
         .hAlign(.leading)
         .padding()
         .overlay(alignment: .topTrailing, content: {
-            //if tournament.adminUID == userUID {
                 NavigationLink {
                     DetailedTournamentView(tournament: tournament)
                 } label: {
                     Image(systemName: "slider.horizontal.3")
-                        //.font(.caption)
                         .rotationEffect(.init(degrees: -90))
                         .foregroundColor(colorScheme == .dark ? .white : .black)
                         .padding(8)
                         .contentShape(Rectangle())
                 }
                 .offset(x:8)
-            //}
         })
         .onAppear {
             if docListener == nil {
@@ -83,6 +79,13 @@ struct TournamentCardView: View {
                         }
                     }
                 })
+            }
+            
+            print("PlayersUID: \(tournament.playersUID)")
+            print("UserUID: \(userUID)")
+            
+            if tournament.playersUID.contains(userUID) || tournament.playersUID.contains(childUID) {
+                alreadyJoinedTournament = true
             }
         }
     }
@@ -104,12 +107,14 @@ struct TournamentCardView: View {
                             .fontWeight(.semibold)
                     }
                 }
+                .disabled(alreadyJoinedTournament)
                 .blurredSheet(.init(.ultraThinMaterial), show: $showSheet) {
                     
                 } content: {
                     JoinTournamentView(tournament: tournament, accountType: "Student")
                         .presentationDetents([.large, .medium,.height(150)])
                 }
+                
                     
                 
                 
@@ -127,6 +132,7 @@ struct TournamentCardView: View {
                             .fontWeight(.semibold)
                     }
                 }
+                .disabled(alreadyJoinedTournament)
                 .blurredSheet(.init(.ultraThinMaterial), show: $showSheet) {
                     
                 } content: {
@@ -149,6 +155,7 @@ struct TournamentCardView: View {
                             .fontWeight(.semibold)
                     }
                 }
+                .disabled(alreadyJoinedTournament)
                 .blurredSheet(.init(.ultraThinMaterial), show: $showSheet) {
                     
                 } content: {

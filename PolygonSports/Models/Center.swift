@@ -19,6 +19,7 @@ struct Center: Identifiable, Codable, Equatable {
     var lat: Double
     var lng: Double
     var sport: String
+    var uid: String
     
     enum CodingKeys: CodingKey {
         case id
@@ -30,5 +31,7 @@ struct Center: Identifiable, Codable, Equatable {
         case lat
         case lng
         case sport
+        case uid
+        
     }
 }

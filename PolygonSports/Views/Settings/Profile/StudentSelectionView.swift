@@ -28,13 +28,17 @@ struct StudentSelectionView: View {
             Text("Edit Player: \(username)")
                 .font(.custom("LexendDeca-Regular", size: 18))
         }
+        .buttonStyle(BorderedButtonStyle())
+        .padding()
         
         NavigationLink {
             MapView(showMenu: $show)
         } label: {
             Text("Browse Some Coaches")
                 .font(.custom("LexendDeca-Regular", size: 18))
-        }.navigationBarBackButtonHidden()
+        }
+        .buttonStyle(BorderedButtonStyle())
+        .padding()
     }
 }
 

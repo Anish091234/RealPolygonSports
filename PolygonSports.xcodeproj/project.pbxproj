@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		510384FC298F3FC1001CB113 /* CreateAnnouncementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510384FB298F3FC1001CB113 /* CreateAnnouncementView.swift */; };
+		51038503298F4C02001CB113 /* DetailedAnnouncementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51038502298F4C02001CB113 /* DetailedAnnouncementView.swift */; };
 		510431AC297D0327000597A2 /* SildeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510431AB297D0327000597A2 /* SildeMenu.swift */; };
 		5109E8D6297B7CEF00C859D8 /* EditChildPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5109E8D5297B7CEF00C859D8 /* EditChildPlayer.swift */; };
 		511638462972061800907803 /* CoachGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511638452972061800907803 /* CoachGameView.swift */; };
-		5119270E296A747900F2AE5D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5119270D296A747900F2AE5D /* GoogleService-Info.plist */; };
 		51192711296A772200F2AE5D /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51192710296A772200F2AE5D /* Tournament.swift */; };
 		51192713296A773F00F2AE5D /* CreateTournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51192712296A773F00F2AE5D /* CreateTournament.swift */; };
 		51192715296A774E00F2AE5D /* TournamentCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51192714296A774E00F2AE5D /* TournamentCardView.swift */; };
 		51192717296A776100F2AE5D /* ReuseableTournamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51192716296A776100F2AE5D /* ReuseableTournamentView.swift */; };
 		51192719296A776C00F2AE5D /* TournamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51192718296A776C00F2AE5D /* TournamentView.swift */; };
+		5119470229AD8A8700F51B27 /* LessonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178E17429AD89A3003E7562 /* LessonsView.swift */; };
+		5119470429AD8AE800F51B27 /* CreateNewLessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119470329AD8AE800F51B27 /* CreateNewLessonView.swift */; };
+		5119470629AD910F00F51B27 /* DetailedLessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119470529AD910F00F51B27 /* DetailedLessonView.swift */; };
+		5119470829AD9B5B00F51B27 /* Coach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5119470729AD9B5B00F51B27 /* Coach.swift */; };
 		512CC2362984931000B885F0 /* CentersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512CC2352984931000B885F0 /* CentersView.swift */; };
 		512CC23A2984987400B885F0 /* LexendDeca.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 512CC2392984986800B885F0 /* LexendDeca.ttf */; };
 		512CC23D29856FC800B885F0 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512CC23C29856FC800B885F0 /* AuthViewModel.swift */; };
@@ -35,11 +40,25 @@
 		5157252B2985C2030009EAB5 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157252A2985C2030009EAB5 /* Place.swift */; };
 		5157252D2985D4B80009EAB5 /* ListCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5157252C2985D4B80009EAB5 /* ListCenterView.swift */; };
 		51572534298611610009EAB5 /* DetailedPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51572533298611610009EAB5 /* DetailedPlayerView.swift */; };
+		51572536298613B80009EAB5 /* JoinCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51572535298613B80009EAB5 /* JoinCenter.swift */; };
+		5163CC7429A6C16D0033D889 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5163CC7329A6C16D0033D889 /* Lesson.swift */; };
+		5164A16A29A16A1C007F1131 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5164A16929A16A1C007F1131 /* SettingsView.swift */; };
+		5164A17129A17DEE007F1131 /* ManagePlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5164A17029A17DEE007F1131 /* ManagePlayersView.swift */; };
+		5164A17329A17EC8007F1131 /* ViewRecentPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5164A17229A17EC8007F1131 /* ViewRecentPostsView.swift */; };
+		5164A17729A186AA007F1131 /* UserMatchDoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5164A17629A186AA007F1131 /* UserMatchDoc.swift */; };
+		5164A1AF29A1B012007F1131 /* CoachDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5164A1AE29A1B012007F1131 /* CoachDashboard.swift */; };
+		5164A1B229A1B039007F1131 /* CoachDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5164A1B129A1B039007F1131 /* CoachDashboardView.swift */; };
+		5164A1B429A1BA8B007F1131 /* RecentMatches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5164A1B329A1BA8B007F1131 /* RecentMatches.swift */; };
 		51723385296E5EBE00F38A50 /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51723384296E5EBE00F38A50 /* MatchView.swift */; };
 		51723388296E639700F38A50 /* GameCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51723387296E639700F38A50 /* GameCounter.swift */; };
 		5172338A296E66EA00F38A50 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51723389296E66EA00F38A50 /* Match.swift */; };
+		5178E17029AD86D0003E7562 /* StarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5178E16F29AD86D0003E7562 /* StarView.swift */; };
 		5185E8202975ACA0005E1546 /* EditPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5185E81F2975ACA0005E1546 /* EditPlayer.swift */; };
+		5190E2A52996034500F6D006 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5190E2A42996034500F6D006 /* InfoView.swift */; };
+		519FC926298DFE2D00F1B958 /* ListPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FC925298DFE2D00F1B958 /* ListPersonView.swift */; };
+		519FC928298DFF7A00F1B958 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FC927298DFF7A00F1B958 /* Announcement.swift */; };
 		51B94ADF297F793900072456 /* Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B94ADE297F793900072456 /* Center.swift */; };
+		51BD8213298DD69300F1D9F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51BD8212298DD69300F1D9F6 /* GoogleService-Info.plist */; };
 		51BFAFF72960EAA40045F05B /* PolygonSportsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BFAFF62960EAA40045F05B /* PolygonSportsApp.swift */; };
 		51BFAFF92960EAA40045F05B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BFAFF82960EAA40045F05B /* ContentView.swift */; };
 		51BFAFFB2960EAA50045F05B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51BFAFFA2960EAA50045F05B /* Assets.xcassets */; };
@@ -82,8 +101,16 @@
 		51D1489B297B86F0007E05F0 /* StudentSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1489A297B86F0007E05F0 /* StudentSelectionView.swift */; };
 		51D1489D297B8702007E05F0 /* CoachSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1489C297B8702007E05F0 /* CoachSelectionView.swift */; };
 		51D148A0297B88C4007E05F0 /* CreateAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1489F297B88C4007E05F0 /* CreateAnnotation.swift */; };
+		51D30B3F298738E500C7D96B /* ListEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D30B3E298738E500C7D96B /* ListEventsView.swift */; };
 		51E0022D29634BD30072ED69 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E0022C29634BD30072ED69 /* OnBoardingView.swift */; };
+		51E5BA7829A5BD92003485A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E5BA7729A5BD92003485A3 /* AppDelegate.swift */; };
+		51E5BA7A29A5BDC6003485A3 /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E5BA7929A5BDC6003485A3 /* PushNotificationSender.swift */; };
+		51E5BA7C29A5BDE4003485A3 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E5BA7B29A5BDE4003485A3 /* PushNotificationManager.swift */; };
+		51E5BA7F29A5BE0B003485A3 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 51E5BA7E29A5BE0B003485A3 /* FirebaseMessaging */; };
 		51F0E99A297E2F4600C0F845 /* JoinTournamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F0E999297E2F4600C0F845 /* JoinTournamentView.swift */; };
+		51FFFEBD29A2B74F00A47748 /* DetailedMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FFFEBC29A2B74F00A47748 /* DetailedMatchView.swift */; };
+		51FFFEBF29A3218A00A47748 /* UpcomingEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FFFEBE29A3218A00A47748 /* UpcomingEventsView.swift */; };
+		51FFFEC129A32C2C00A47748 /* ManagePlayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FFFEC029A32C2C00A47748 /* ManagePlayers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,15 +131,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		510384FB298F3FC1001CB113 /* CreateAnnouncementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAnnouncementView.swift; sourceTree = "<group>"; };
+		51038502298F4C02001CB113 /* DetailedAnnouncementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedAnnouncementView.swift; sourceTree = "<group>"; };
 		510431AB297D0327000597A2 /* SildeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SildeMenu.swift; sourceTree = "<group>"; };
 		5109E8D5297B7CEF00C859D8 /* EditChildPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChildPlayer.swift; sourceTree = "<group>"; };
 		511638452972061800907803 /* CoachGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachGameView.swift; sourceTree = "<group>"; };
-		5119270D296A747900F2AE5D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		51192710296A772200F2AE5D /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
 		51192712296A773F00F2AE5D /* CreateTournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTournament.swift; sourceTree = "<group>"; };
 		51192714296A774E00F2AE5D /* TournamentCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentCardView.swift; sourceTree = "<group>"; };
 		51192716296A776100F2AE5D /* ReuseableTournamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseableTournamentView.swift; sourceTree = "<group>"; };
 		51192718296A776C00F2AE5D /* TournamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentView.swift; sourceTree = "<group>"; };
+		5119470329AD8AE800F51B27 /* CreateNewLessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewLessonView.swift; sourceTree = "<group>"; };
+		5119470529AD910F00F51B27 /* DetailedLessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedLessonView.swift; sourceTree = "<group>"; };
+		5119470729AD9B5B00F51B27 /* Coach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coach.swift; sourceTree = "<group>"; };
 		512CC2352984931000B885F0 /* CentersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentersView.swift; sourceTree = "<group>"; };
 		512CC2392984986800B885F0 /* LexendDeca.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LexendDeca.ttf; sourceTree = "<group>"; };
 		512CC23B2984989100B885F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -133,11 +164,26 @@
 		5157252A2985C2030009EAB5 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		5157252C2985D4B80009EAB5 /* ListCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCenterView.swift; sourceTree = "<group>"; };
 		51572533298611610009EAB5 /* DetailedPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPlayerView.swift; sourceTree = "<group>"; };
+		51572535298613B80009EAB5 /* JoinCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCenter.swift; sourceTree = "<group>"; };
+		5163CC7329A6C16D0033D889 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		5164A16929A16A1C007F1131 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5164A17029A17DEE007F1131 /* ManagePlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePlayersView.swift; sourceTree = "<group>"; };
+		5164A17229A17EC8007F1131 /* ViewRecentPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRecentPostsView.swift; sourceTree = "<group>"; };
+		5164A17629A186AA007F1131 /* UserMatchDoc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMatchDoc.swift; sourceTree = "<group>"; };
+		5164A1AE29A1B012007F1131 /* CoachDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachDashboard.swift; sourceTree = "<group>"; };
+		5164A1B129A1B039007F1131 /* CoachDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachDashboardView.swift; sourceTree = "<group>"; };
+		5164A1B329A1BA8B007F1131 /* RecentMatches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMatches.swift; sourceTree = "<group>"; };
 		51723384296E5EBE00F38A50 /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
 		51723387296E639700F38A50 /* GameCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCounter.swift; sourceTree = "<group>"; };
 		51723389296E66EA00F38A50 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		5178E16F29AD86D0003E7562 /* StarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarView.swift; sourceTree = "<group>"; };
+		5178E17429AD89A3003E7562 /* LessonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsView.swift; sourceTree = "<group>"; };
 		5185E81F2975ACA0005E1546 /* EditPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlayer.swift; sourceTree = "<group>"; };
+		5190E2A42996034500F6D006 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		519FC925298DFE2D00F1B958 /* ListPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPersonView.swift; sourceTree = "<group>"; };
+		519FC927298DFF7A00F1B958 /* Announcement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
 		51B94ADE297F793900072456 /* Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Center.swift; sourceTree = "<group>"; };
+		51BD8212298DD69300F1D9F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		51BFAFF32960EAA40045F05B /* PolygonSports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolygonSports.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51BFAFF62960EAA40045F05B /* PolygonSportsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolygonSportsApp.swift; sourceTree = "<group>"; };
 		51BFAFF82960EAA40045F05B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -175,8 +221,16 @@
 		51D1489A297B86F0007E05F0 /* StudentSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentSelectionView.swift; sourceTree = "<group>"; };
 		51D1489C297B8702007E05F0 /* CoachSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachSelectionView.swift; sourceTree = "<group>"; };
 		51D1489F297B88C4007E05F0 /* CreateAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAnnotation.swift; sourceTree = "<group>"; };
+		51D30B3E298738E500C7D96B /* ListEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEventsView.swift; sourceTree = "<group>"; };
 		51E0022C29634BD30072ED69 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		51E5BA7529A5BC8E003485A3 /* PolygonSports.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PolygonSports.entitlements; sourceTree = "<group>"; };
+		51E5BA7729A5BD92003485A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		51E5BA7929A5BDC6003485A3 /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
+		51E5BA7B29A5BDE4003485A3 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		51F0E999297E2F4600C0F845 /* JoinTournamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinTournamentView.swift; sourceTree = "<group>"; };
+		51FFFEBC29A2B74F00A47748 /* DetailedMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedMatchView.swift; sourceTree = "<group>"; };
+		51FFFEBE29A3218A00A47748 /* UpcomingEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsView.swift; sourceTree = "<group>"; };
+		51FFFEC029A32C2C00A47748 /* ManagePlayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePlayers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +238,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51E5BA7F29A5BE0B003485A3 /* FirebaseMessaging in Frameworks */,
 				51BFB0332960ED150045F05B /* FirebaseDatabaseSwift in Frameworks */,
 				51BFB0312960ED150045F05B /* FirebaseDatabase in Frameworks */,
 				51BFB02C2960EB470045F05B /* SDWebImageSwiftUI in Frameworks */,
@@ -212,6 +267,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		510384FD298F428E001CB113 /* Announcements */ = {
+			isa = PBXGroup;
+			children = (
+				510384FB298F3FC1001CB113 /* CreateAnnouncementView.swift */,
+				51038502298F4C02001CB113 /* DetailedAnnouncementView.swift */,
+			);
+			path = Announcements;
+			sourceTree = "<group>";
+		};
 		510431AD297D032A000597A2 /* SlideMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,8 +347,12 @@
 				51192710296A772200F2AE5D /* Tournament.swift */,
 				51BFB0492960EF800045F05B /* User.swift */,
 				51B94ADE297F793900072456 /* Center.swift */,
+				5163CC7329A6C16D0033D889 /* Lesson.swift */,
 				51723389296E66EA00F38A50 /* Match.swift */,
 				512CC23C29856FC800B885F0 /* AuthViewModel.swift */,
+				5119470729AD9B5B00F51B27 /* Coach.swift */,
+				5164A17629A186AA007F1131 /* UserMatchDoc.swift */,
+				519FC927298DFF7A00F1B958 /* Announcement.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -294,9 +362,46 @@
 			children = (
 				5157252C2985D4B80009EAB5 /* ListCenterView.swift */,
 				512CC2352984931000B885F0 /* CentersView.swift */,
+				519FC925298DFE2D00F1B958 /* ListPersonView.swift */,
+				51D30B3E298738E500C7D96B /* ListEventsView.swift */,
 				51572533298611610009EAB5 /* DetailedPlayerView.swift */,
+				51572535298613B80009EAB5 /* JoinCenter.swift */,
 			);
 			path = Centers;
+			sourceTree = "<group>";
+		};
+		5164A16F29A17DBF007F1131 /* SettingsGroup */ = {
+			isa = PBXGroup;
+			children = (
+				5164A16929A16A1C007F1131 /* SettingsView.swift */,
+				51FFFEBE29A3218A00A47748 /* UpcomingEventsView.swift */,
+				5164A1B329A1BA8B007F1131 /* RecentMatches.swift */,
+				51FFFEBC29A2B74F00A47748 /* DetailedMatchView.swift */,
+				5164A1AE29A1B012007F1131 /* CoachDashboard.swift */,
+				5164A17229A17EC8007F1131 /* ViewRecentPostsView.swift */,
+				5164A17029A17DEE007F1131 /* ManagePlayersView.swift */,
+			);
+			path = SettingsGroup;
+			sourceTree = "<group>";
+		};
+		5164A1B029A1B01B007F1131 /* Coach */ = {
+			isa = PBXGroup;
+			children = (
+				51D1489F297B88C4007E05F0 /* CreateAnnotation.swift */,
+				5178E16F29AD86D0003E7562 /* StarView.swift */,
+				5164A1B129A1B039007F1131 /* CoachDashboardView.swift */,
+			);
+			path = Coach;
+			sourceTree = "<group>";
+		};
+		5164A1B529A1C1B9007F1131 /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				51FFFEC029A32C2C00A47748 /* ManagePlayers.swift */,
+				51447B2F296CFCF00075A01F /* CreateChild.swift */,
+				512D6CFE296E4F7400E1E080 /* CreatePlayer.swift */,
+			);
+			path = Players;
 			sourceTree = "<group>";
 		};
 		51723386296E5EC800F38A50 /* Lil Bit More Detailed */ = {
@@ -310,6 +415,16 @@
 			path = "Lil Bit More Detailed";
 			sourceTree = "<group>";
 		};
+		5178E17329AD899F003E7562 /* Lessons */ = {
+			isa = PBXGroup;
+			children = (
+				5178E17429AD89A3003E7562 /* LessonsView.swift */,
+				5119470529AD910F00F51B27 /* DetailedLessonView.swift */,
+				5119470329AD8AE800F51B27 /* CreateNewLessonView.swift */,
+			);
+			path = Lessons;
+			sourceTree = "<group>";
+		};
 		51BFAFEA2960EAA40045F05B = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +432,7 @@
 				51BFB0062960EAA50045F05B /* PolygonSportsTests */,
 				51BFB0102960EAA50045F05B /* PolygonSportsUITests */,
 				51BFAFF42960EAA40045F05B /* Products */,
+				51E5BA7D29A5BE0B003485A3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -333,6 +449,7 @@
 		51BFAFF52960EAA40045F05B /* PolygonSports */ = {
 			isa = PBXGroup;
 			children = (
+				51E5BA7529A5BC8E003485A3 /* PolygonSports.entitlements */,
 				512CC23B2984989100B885F0 /* Info.plist */,
 				51BFB0212960EACE0045F05B /* App */,
 				514D74BA296CF162009A43A0 /* Models */,
@@ -376,8 +493,9 @@
 				51BFAFFA2960EAA50045F05B /* Assets.xcassets */,
 				51BFAFF82960EAA40045F05B /* ContentView.swift */,
 				51BFB03E2960EE2D0045F05B /* MainView.swift */,
+				51BD8212298DD69300F1D9F6 /* GoogleService-Info.plist */,
 				51BFAFF62960EAA40045F05B /* PolygonSportsApp.swift */,
-				5119270D296A747900F2AE5D /* GoogleService-Info.plist */,
+				51E5BA7729A5BD92003485A3 /* AppDelegate.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -386,8 +504,8 @@
 			isa = PBXGroup;
 			children = (
 				51BFB0412960EF450045F05B /* CustomTextField.swift */,
-				512CC2392984986800B885F0 /* LexendDeca.ttf */,
 				51BFB06F2960F1710045F05B /* View+Extensions.swift */,
+				512CC2392984986800B885F0 /* LexendDeca.ttf */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -404,6 +522,7 @@
 		51BFB04B2960EF960045F05B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				51E5BA7629A5BD83003485A3 /* NotificationManagers */,
 				51BFB04C2960EFA00045F05B /* CustomFirebaseService.swift */,
 				51BFB04E2960EFAD0045F05B /* ImagePicker.swift */,
 			);
@@ -423,6 +542,9 @@
 		51BFB0572960EFF10045F05B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5178E17329AD899F003E7562 /* Lessons */,
+				5164A1B029A1B01B007F1131 /* Coach */,
+				510384FD298F428E001CB113 /* Announcements */,
 				5157252E2985D4BC0009EAB5 /* Centers */,
 				510431AD297D032A000597A2 /* SlideMenu */,
 				5119270F296A767B00F2AE5D /* Tournaments */,
@@ -460,13 +582,11 @@
 		51BFB06A2960F07B0045F05B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				5164A1B529A1C1B9007F1131 /* Players */,
+				5164A16F29A17DBF007F1131 /* SettingsGroup */,
 				51D1489E297B870C007E05F0 /* Profile */,
-				51BFB06B2960F0840045F05B /* ProfileView.swift */,
-				512D6CFE296E4F7400E1E080 /* CreatePlayer.swift */,
-				51447B2F296CFCF00075A01F /* CreateChild.swift */,
-				51D1489F297B88C4007E05F0 /* CreateAnnotation.swift */,
+				5190E2A42996034500F6D006 /* InfoView.swift */,
 				51E0022C29634BD30072ED69 /* OnBoardingView.swift */,
-				51BFB06D2960F08D0045F05B /* ReuseableProfileContent.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -474,6 +594,8 @@
 		51D1489E297B870C007E05F0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				51BFB06D2960F08D0045F05B /* ReuseableProfileContent.swift */,
+				51BFB06B2960F0840045F05B /* ProfileView.swift */,
 				5109E8D5297B7CEF00C859D8 /* EditChildPlayer.swift */,
 				51D1489C297B8702007E05F0 /* CoachSelectionView.swift */,
 				51D1489A297B86F0007E05F0 /* StudentSelectionView.swift */,
@@ -481,6 +603,22 @@
 				5185E81F2975ACA0005E1546 /* EditPlayer.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		51E5BA7629A5BD83003485A3 /* NotificationManagers */ = {
+			isa = PBXGroup;
+			children = (
+				51E5BA7929A5BDC6003485A3 /* PushNotificationSender.swift */,
+				51E5BA7B29A5BDE4003485A3 /* PushNotificationManager.swift */,
+			);
+			path = NotificationManagers;
+			sourceTree = "<group>";
+		};
+		51E5BA7D29A5BE0B003485A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -508,6 +646,7 @@
 				51BFB0362960ED150045F05B /* FirebaseFirestoreCombine-Community */,
 				51BFB0382960ED150045F05B /* FirebaseFirestoreSwift */,
 				51BFB03A2960ED150045F05B /* FirebaseStorage */,
+				51E5BA7E29A5BE0B003485A3 /* FirebaseMessaging */,
 			);
 			productName = PolygonSports;
 			productReference = 51BFAFF32960EAA40045F05B /* PolygonSports.app */;
@@ -602,9 +741,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				512CC23A2984987400B885F0 /* LexendDeca.ttf in Resources */,
+				51BD8213298DD69300F1D9F6 /* GoogleService-Info.plist in Resources */,
 				51BFAFFE2960EAA50045F05B /* Preview Assets.xcassets in Resources */,
 				51BFAFFB2960EAA50045F05B /* Assets.xcassets in Resources */,
-				5119270E296A747900F2AE5D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,18 +769,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				51D148A0297B88C4007E05F0 /* CreateAnnotation.swift in Sources */,
+				5164A1B229A1B039007F1131 /* CoachDashboardView.swift in Sources */,
 				51BFB05A2960F0000045F05B /* LocationDetailsView.swift in Sources */,
+				5119470429AD8AE800F51B27 /* CreateNewLessonView.swift in Sources */,
 				5146B9DD2967CE6D00A1CA66 /* MainMessagesView.swift in Sources */,
 				51192719296A776C00F2AE5D /* TournamentView.swift in Sources */,
 				51D1489D297B8702007E05F0 /* CoachSelectionView.swift in Sources */,
 				51BFB0522960EFC70045F05B /* AppleAuth.swift in Sources */,
+				51FFFEC129A32C2C00A47748 /* ManagePlayers.swift in Sources */,
+				51E5BA7829A5BD92003485A3 /* AppDelegate.swift in Sources */,
+				519FC928298DFF7A00F1B958 /* Announcement.swift in Sources */,
 				51BFB0612960F02D0045F05B /* CreateNewPost.swift in Sources */,
 				51E0022D29634BD30072ED69 /* OnBoardingView.swift in Sources */,
+				510384FC298F3FC1001CB113 /* CreateAnnouncementView.swift in Sources */,
+				5164A1AF29A1B012007F1131 /* CoachDashboard.swift in Sources */,
 				51BFB0422960EF450045F05B /* CustomTextField.swift in Sources */,
 				512CC2362984931000B885F0 /* CentersView.swift in Sources */,
 				51BFAFF92960EAA40045F05B /* ContentView.swift in Sources */,
 				51447B2E296CF73C0075A01F /* ReuseablePlayerView.swift in Sources */,
+				51E5BA7A29A5BDC6003485A3 /* PushNotificationSender.swift in Sources */,
 				51BFB0632960F0310045F05B /* PostCardView.swift in Sources */,
+				5119470629AD910F00F51B27 /* DetailedLessonView.swift in Sources */,
 				51BFB03F2960EE2D0045F05B /* MainView.swift in Sources */,
 				5146B9D72967CE2C00A1CA66 /* FirebaseConstants.swift in Sources */,
 				51C5413D296BB1A5001510FB /* DetailedTournamentView.swift in Sources */,
@@ -652,16 +800,21 @@
 				511638462972061800907803 /* CoachGameView.swift in Sources */,
 				51BFB04F2960EFAD0045F05B /* ImagePicker.swift in Sources */,
 				51BFB0652960F0360045F05B /* PostsView.swift in Sources */,
+				51572536298613B80009EAB5 /* JoinCenter.swift in Sources */,
 				510431AC297D0327000597A2 /* SildeMenu.swift in Sources */,
 				5146B9D52967CDFE00A1CA66 /* FirebaseManager.swift in Sources */,
 				51D1489B297B86F0007E05F0 /* StudentSelectionView.swift in Sources */,
+				5119470829AD9B5B00F51B27 /* Coach.swift in Sources */,
 				5146B9CF2967CDCC00A1CA66 /* ChatUser.swift in Sources */,
 				51D14899297B86E1007E05F0 /* ParentSelectionView.swift in Sources */,
 				51BFB04D2960EFA00045F05B /* CustomFirebaseService.swift in Sources */,
 				51572534298611610009EAB5 /* DetailedPlayerView.swift in Sources */,
 				512D6CFF296E4F7400E1E080 /* CreatePlayer.swift in Sources */,
 				5146B9D32967CDE500A1CA66 /* RecentMessage.swift in Sources */,
+				5164A16A29A16A1C007F1131 /* SettingsView.swift in Sources */,
 				512CC23D29856FC800B885F0 /* AuthViewModel.swift in Sources */,
+				51FFFEBF29A3218A00A47748 /* UpcomingEventsView.swift in Sources */,
+				519FC926298DFE2D00F1B958 /* ListPersonView.swift in Sources */,
 				51BFB05C2960F00B0045F05B /* MapView.swift in Sources */,
 				5157252D2985D4B80009EAB5 /* ListCenterView.swift in Sources */,
 				51192713296A773F00F2AE5D /* CreateTournament.swift in Sources */,
@@ -670,27 +823,39 @@
 				51447B30296CFCF00075A01F /* CreateChild.swift in Sources */,
 				51F0E99A297E2F4600C0F845 /* JoinTournamentView.swift in Sources */,
 				51BFB0442960EF630045F05B /* LoadingView.swift in Sources */,
+				51FFFEBD29A2B74F00A47748 /* DetailedMatchView.swift in Sources */,
+				51D30B3F298738E500C7D96B /* ListEventsView.swift in Sources */,
+				5178E17029AD86D0003E7562 /* StarView.swift in Sources */,
 				5157252B2985C2030009EAB5 /* Place.swift in Sources */,
 				514D74BC296CF179009A43A0 /* Player.swift in Sources */,
 				51723385296E5EBE00F38A50 /* MatchView.swift in Sources */,
 				51BFB0672960F0410045F05B /* ReuseablePostsView.swift in Sources */,
+				51E5BA7C29A5BDE4003485A3 /* PushNotificationManager.swift in Sources */,
 				51BFB0542960EFD30045F05B /* LoginView.swift in Sources */,
 				51723388296E639700F38A50 /* GameCounter.swift in Sources */,
 				5172338A296E66EA00F38A50 /* Match.swift in Sources */,
+				5164A17129A17DEE007F1131 /* ManagePlayersView.swift in Sources */,
+				5164A1B429A1BA8B007F1131 /* RecentMatches.swift in Sources */,
 				5146B9D12967CDD800A1CA66 /* ChatMessage.swift in Sources */,
 				51192715296A774E00F2AE5D /* TournamentCardView.swift in Sources */,
+				5119470229AD8A8700F51B27 /* LessonsView.swift in Sources */,
 				5146B9CD2967CDB300A1CA66 /* ImagePicker2.swift in Sources */,
 				51C5413B296BB099001510FB /* SearchTournamentView.swift in Sources */,
 				5146B9DB2967CE5A00A1CA66 /* CreateNewMessageView.swift in Sources */,
 				51BFB0562960EFD60045F05B /* RegisterView.swift in Sources */,
+				5164A17329A17EC8007F1131 /* ViewRecentPostsView.swift in Sources */,
 				51BFAFF72960EAA40045F05B /* PolygonSportsApp.swift in Sources */,
+				5163CC7429A6C16D0033D889 /* Lesson.swift in Sources */,
 				51BFB06C2960F0840045F05B /* ProfileView.swift in Sources */,
+				5190E2A52996034500F6D006 /* InfoView.swift in Sources */,
+				5164A17729A186AA007F1131 /* UserMatchDoc.swift in Sources */,
 				5185E8202975ACA0005E1546 /* EditPlayer.swift in Sources */,
 				51BFB06E2960F08D0045F05B /* ReuseableProfileContent.swift in Sources */,
 				5109E8D6297B7CEF00C859D8 /* EditChildPlayer.swift in Sources */,
 				51192717296A776100F2AE5D /* ReuseableTournamentView.swift in Sources */,
 				51B94ADF297F793900072456 /* Center.swift in Sources */,
 				51BFB04A2960EF800045F05B /* User.swift in Sources */,
+				51038503298F4C02001CB113 /* DetailedAnnouncementView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -846,23 +1011,26 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PolygonSports/PolygonSports.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5.3.5;
 				DEVELOPMENT_ASSET_PATHS = "\"PolygonSports/Preview Content\"";
 				DEVELOPMENT_TEAM = 7Y9NDQ7P65;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PolygonSports/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Polygon;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.0;
+				MARKETING_VERSION = 5.3.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anishRangdal.PolygonSports;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -876,23 +1044,26 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PolygonSports/PolygonSports.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5.3.5;
 				DEVELOPMENT_ASSET_PATHS = "\"PolygonSports/Preview Content\"";
 				DEVELOPMENT_TEAM = 7Y9NDQ7P65;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PolygonSports/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Polygon;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.0;
+				MARKETING_VERSION = 5.3.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anishRangdal.PolygonSports;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1077,6 +1248,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 51BFB02D2960ED150045F05B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		51E5BA7E29A5BE0B003485A3 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51BFB02D2960ED150045F05B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -63,16 +63,16 @@ struct DetailedTournamentView: View {
                         .font(.custom("LexendDeca-Regular", size: 18))
                         .hAlign(.leading)
                         .padding()
-                    ForEach(localgroup1, id: \.self) { player in
+                    ForEach(tournament.group1, id: \.self) { player in
                         Text(player)
                             .font(.custom("LexendDeca-Regular", size: 18))
                     }
                     
-                    if localgroup1.isEmpty {
+                    if tournament.group1.isEmpty {
                         Text("")
                     } else {
                         NavigationLink {
-                            MatchView(fetchedPlayers: localgroup1, tournamentID: tournament.id ?? "", tournamentAdminUID: tournament.adminUID, group: 1)
+                            MatchView(fetchedPlayers: tournament.group1, tournamentID: tournament.id ?? "", tournamentAdminUID: tournament.adminUID, group: 1)
                         } label: {
                             Text("Start Matches For Group 3")
                                 .font(.custom("LexendDeca-Regular", size: 18))
@@ -95,17 +95,17 @@ struct DetailedTournamentView: View {
                         .font(.custom("LexendDeca-Regular", size: 18))
                         .hAlign(.leading)
                         .padding()
-                    ForEach(localgroup2, id: \.self) { player in
+                    ForEach(tournament.group2, id: \.self) { player in
                         Text(player)
                             .font(.custom("LexendDeca-Regular", size: 18))
                     }
                     
-                    if localgroup2.isEmpty {
+                    if tournament.group2.isEmpty {
                         Text("")
                         
                     } else {
                         NavigationLink {
-                            MatchView(fetchedPlayers: localgroup2, tournamentID: tournament.id ?? "", tournamentAdminUID: tournament.adminUID, group: 2)
+                            MatchView(fetchedPlayers: tournament.group2, tournamentID: tournament.id ?? "", tournamentAdminUID: tournament.adminUID, group: 2)
                         } label: {
                             Text("Start Matches For Group 3")
                                 .font(.custom("LexendDeca-Regular", size: 18))
@@ -126,16 +126,16 @@ struct DetailedTournamentView: View {
                         .font(.custom("LexendDeca-Regular", size: 18))
                         .hAlign(.leading)
                         .padding()
-                    ForEach(localgroup3, id: \.self) { player in
+                    ForEach(tournament.group3, id: \.self) { player in
                         Text(player)
                             .font(.custom("LexendDeca-Regular", size: 18))
                     }
                     
-                    if localgroup3.isEmpty {
+                    if tournament.group3.isEmpty {
                         Text("")
                     } else {
                         NavigationLink {
-                            MatchView(fetchedPlayers: localgroup3, tournamentID: tournament.id ?? "", tournamentAdminUID: tournament.adminUID, group: 3)
+                            MatchView(fetchedPlayers: tournament.group3, tournamentID: tournament.id ?? "", tournamentAdminUID: tournament.adminUID, group: 3)
                         } label: {
                             Text("Start Matches For Group 3")
                                 .font(.custom("LexendDeca-Regular", size: 18))
@@ -168,15 +168,16 @@ struct DetailedTournamentView: View {
             }
         }
     }
+    
     func searchPlayers() async {
         do {
             let documents = try await Firestore.firestore().collection("Players")
                 .getDocuments()
-            
+    
             let players = try documents.documents.compactMap { doc -> Player? in
                 try doc.data(as: Player.self)
             }
-            
+    
             fetchedPlayers = players
         } catch {
             print(error.localizedDescription)
@@ -196,28 +197,26 @@ struct DetailedTournamentView: View {
             }
             
             if localgroup1.isEmpty {
-                print("isEmpty")
+                print("Group 1 isEmpty")
                 isGroup1Empty = true
             }
             
             if localgroup2.isEmpty {
+                print("Group 2 isEmpty")
                 isGroup2Empty = true
             }
             
             if localgroup3.isEmpty {
+                print("Group 3 isEmpty")
                 isGroup3Empty = true
             }
-            
-            print("Tournament Group 1: \(tournament.group1)")
-            print("Local Group 1 \(localgroup1)")
-            
         }
     }
 }
 
 struct DetailedTournament_Previews: PreviewProvider {
     static var previews: some View {
-        DetailedTournamentView(tournament: Tournament(title: "League 1", adminName: "Anish Rangdal", adminUID: "123123123", publishedDate: Date(), tournamentDate: Date(), group1: ["Bob", "John"], group2: ["Thug", "Hamilton"], group3: ["Jefferson", "Wakanda"], group1End: 1000, group2End: 2000))
+        DetailedTournamentView(tournament: Tournament(title: "League 1", adminName: "Anish Rangdal", adminUID: "123123123", publishedDate: Date(), tournamentDate: Date(), group1: ["Bob", "John"], group2: ["Thug", "Hamilton"], group3: ["Jefferson", "Wakanda"], group1End: 1000, group2End: 2000, address: "123 Main Street", center: "Apple is cool"))
         
     }
 }

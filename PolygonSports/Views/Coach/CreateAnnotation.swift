@@ -7,13 +7,16 @@
 
 import SwiftUI
 import Firebase
+import FirebaseStorage
 import MapKit
 import CoreLocation
-import FirebaseStorage
+
 
 struct CreateAnnotation: View {
     
     @AppStorage ("isAddressSaved") var isAddressSaved: Bool = false
+    @AppStorage("user_center") var storedCenterName = ""
+    @State private var centerName: String = ""
     
     let geocoder = CLGeocoder()
     @State var name = ""
@@ -86,7 +89,7 @@ struct CreateAnnotation: View {
                             .blur(radius: 10)
                     )
                     .padding(.top, 20)
-                    TextField("Enter Your Center Name", text: $name)
+                    TextField("Enter Your Name", text: $name)
                         .font(.custom("LexendDeca-Regular", size: 18))
                         .padding()
                         .foregroundColor(.white)
@@ -129,9 +132,33 @@ struct CreateAnnotation: View {
                 }
                 .padding()
                 
-                Text("Please restart the app in order for the annotation to appear on the map. This is to stop bots from adding annotations")
-                    .font(.custom("LexendDeca-Regular", size: 18))
-                    .padding()
+                //MARK: TextField: Center Name
+                ZStack {
+                    LinearGradient(
+                        gradient: .init(colors: [Color.white, Color.blue.opacity(0.66)]),
+                        startPoint: .init(x: 0.0, y: 0.0),
+                        endPoint: .init(x: 0.75, y: 0.75)
+                    )
+                    .mask(
+                        RoundedRectangle(cornerRadius: 15)
+                            .frame(width: 120, height: 45, alignment: .center)
+                            .blur(radius: 10)
+                    )
+                    .padding(.top, 20)
+                    TextField("Enter Your Center's Name", text: $centerName)
+                        .font(.custom("LexendDeca-Regular", size: 18))
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(
+                            LinearGradient(
+                                gradient: .init(colors: [Color.white, Color.blue.opacity(0.75)]),
+                                startPoint: .init(x: -0.33, y: -0.33),
+                                endPoint: .init(x: 0.66, y: 0.66)
+                            ))
+                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                        .buttonStyle(PlainButtonStyle())
+                }
+                .padding()
                 
                 HStack {
                     //MARK: Done Button
@@ -147,6 +174,7 @@ struct CreateAnnotation: View {
                                 .blur(radius: 10)
                         )
                         .padding(.top, 20)
+                        
                         Button {
                             geocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
                                 if((error) != nil){
@@ -158,7 +186,9 @@ struct CreateAnnotation: View {
                                     lng = coordinates.longitude
                                     Task {
                                         do {
-                                            let center = Center(title: name, headCoach: username, coaches: [username], students: [], address: address, lat: lat, lng: lng, sport: sport)
+                                            let center = Center(title: name, headCoach: username, coaches: [username], students: [], address: address, lat: lat, lng: lng, sport: sport, uid: UUID().uuidString)
+                                            
+                                            storedCenterName = centerName
                                             
                                             try await createDocumentAtFirebase(center)
                                         } catch {
@@ -203,6 +233,7 @@ struct CreateAnnotation: View {
                                 .blur(radius: 10)
                         )
                         .padding(.top, 20)
+                        
                         Button {
                             presentationMode.wrappedValue.dismiss()
                         } label: {

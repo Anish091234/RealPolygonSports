@@ -84,7 +84,7 @@ struct PlaceAnnotationView: View {
 
 struct PlaceAnnotationView_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceAnnotationView(center: Center(title: "Bpb", headCoach: "Bob", coaches: ["Bob"], students: ["Bob"], address: "252 ewifjwoie", lat: 12.12, lng: 12.12, sport: "Soccer"))
+        PlaceAnnotationView(center: Center(title: "Bpb", headCoach: "Bob", coaches: ["Bob"], students: ["Bob"], address: "252 ewifjwoie", lat: 12.12, lng: 12.12, sport: "Soccer", uid: "anishrangdal"))
             .background(Color.gray)
     }
 }

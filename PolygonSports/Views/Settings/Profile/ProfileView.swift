@@ -14,6 +14,7 @@ import Firebase
 
 struct ProfileView: View {
     //MARK: My Profile Data
+    var isFromNavigationLink: Bool
     
     @State private var myProfile: User?
     @State var errorMessage: String = ""
@@ -37,68 +38,79 @@ struct ProfileView: View {
     @AppStorage("account_child_UUID") var childUID = ""
     @AppStorage("account_child_name") var childName = ""
     @AppStorage("hasPlayerAccount") var playerAccountRegistered = false
+    @AppStorage("user_center") var centerName = ""
     var options = ["Posts", "Account Settings"]
     @State var accountCategory = ["Student", "Coach", "Parent"]
     @State var accountType1: String = ""
     @AppStorage("user_image_data") var appImageData: Data!
     var body: some View {
         NavigationStack {
-            ScrollView(showsIndicators: false) {
+            ZStack {
+                
+                Color.gray.opacity(0.4)
                 VStack {
-                    Picker("Holder Text", selection: $selection) {
-                        ForEach(options, id: \.self) { option in
-                            Text(option)
-                                .font(.custom("LexendDeca-Regular", size: 18))
-                        }
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                    
-                    if selection == "Posts" {
-                        if let myProfile {
-                            ResusableProfileContent(user: myProfile)
-                                .refreshable {
-                                    self.myProfile = nil
-                                    await fetchUserData()
-                                }
-                                .padding()
-                        } else {
-                            ProgressView()
-                                .padding()
-                        }
-                    } else  {
+                                        
+                    ScrollView(showsIndicators: false) {
                         
-                        if accountType == "" {
-                            Picker("Choose Account Type", selection: $accountType1) {
-                                ForEach(accountCategory, id: \.self) { item in
-                                    Text(item)
+                        VStack {
+                                    
+                            Picker("Holder Text", selection: $selection) {
+                                ForEach(options, id: \.self) { option in
+                                    Text(option)
                                         .font(.custom("LexendDeca-Regular", size: 18))
                                 }
-                            }.onChange(of: accountType1) { newValue in
-                                accountType = newValue
                             }
-                        } else {
-                            Text("Account Type: \(accountType)")
-                                .font(.custom("LexendDeca-Regular", size: 18))
-                                .bold()
-                                .font(.title3)
+                            .pickerStyle(SegmentedPickerStyle())
+                            
+                            if selection == "Posts" {
+                                if let myProfile {
+                                    ResusableProfileContent(user: myProfile)
+                                        .refreshable {
+                                            self.myProfile = nil
+                                            await fetchUserData()
+                                        }
+                                        .padding()
+                                } else {
+                                    ProgressView()
+                                        .padding()
+                                }
+                            } else  {
+                                
+                                if accountType == "" {
+                                    Picker("Choose Account Type", selection: $accountType1) {
+                                        ForEach(accountCategory, id: \.self) { item in
+                                            Text(item)
+                                                .font(.custom("LexendDeca-Regular", size: 18))
+                                        }
+                                    }.onChange(of: accountType1) { newValue in
+                                        accountType = newValue
+                                    }
+                                } else {
+                                    Text("Account Type: \(accountType)")
+                                        .font(.custom("LexendDeca-Regular", size: 18))
+                                        .bold()
+                                        .font(.title3)
+                                }
+                                
+                                if accountType == "Student" {
+                                    
+                                    StudentSelectionView()
+                                    
+                                } else if accountType == "Parent" {
+                                    
+                                    ParentSelectionView()
+                                    
+                                } else { //Coach Account Type
+                                    
+                                    CoachSelectionView()
+                                    
+                                }
+                            }
                         }
-                        
-                        if accountType == "Student" {
-                            
-                            StudentSelectionView()
-                            
-                        } else if accountType == "Parent" {
-                            
-                            ParentSelectionView()
-                            
-                        } else { //Coach Account Type
-                            
-                            CoachSelectionView()
-                            
-                        }
+                        .padding()
                     }
+                    .padding(.top, isFromNavigationLink ? 40 : 0)
                 }
-                .padding()
             }
             
             .navigationTitle("My Profile")
@@ -123,7 +135,6 @@ struct ProfileView: View {
                     }
                 }
             }
-            
         }
         .overlay(content: {
             LoadingView(show: $isLoading)
@@ -167,7 +178,7 @@ struct ProfileView: View {
         userNameStored = ""
         userRating = ""
         userUID = ""
-
+        centerName = ""
     }
     
     func deleteAccount() {
@@ -190,10 +201,6 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        ProfileView(isFromNavigationLink: false)
     }
 }
-
-
-
-

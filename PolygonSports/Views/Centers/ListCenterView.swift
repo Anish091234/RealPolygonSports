@@ -45,7 +45,6 @@ struct ListCenterView: View {
         }
     }
     
-    
     @ViewBuilder
     func Centers() -> some View {
         ForEach(centers) { center in
@@ -54,34 +53,38 @@ struct ListCenterView: View {
                     CentersView(center: center)
                 }
             } label: {
-                VStack (spacing: 2){
+                ZStack {
+                    Rectangle()
+                        .blendMode(.overlay)
+                        .frame(height: 70)
+                        .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .leading, endPoint: .trailing))
+                        .cornerRadius(9)
+                    
                     Text(center.title)
-                        .font(.custom("LexendDeca-Regular", size: 18))
-                        .hAlign(.leading)
-                        .padding()
-                    Text(center.address)
+                        .bold()
+                        .foregroundColor(.white)
                         .font(.custom("LexendDeca-Regular", size: 15))
-                        .hAlign(.leading)
-                        .padding()
-                    Divider()
                 }
-                .padding()
             }
-
+            .padding()
         }
+        
     }
+    
     
     func fetchTournaments() async {
         do {
             var query: Query!
             
             query = Firestore.firestore().collection("Center")
-                
+            
             let docs = try await query.getDocuments()
             
             let fetchedCenters = docs.documents.compactMap { doc -> Center? in
                 try? doc.data(as: Center.self)
             }
+            
+            print("----------Found Centers----------")
             
             await MainActor.run(body: {
                 centers = fetchedCenters
@@ -93,6 +96,7 @@ struct ListCenterView: View {
     }
     
 }
+
 
 struct ListCenterView_Previews: PreviewProvider {
     static var previews: some View {

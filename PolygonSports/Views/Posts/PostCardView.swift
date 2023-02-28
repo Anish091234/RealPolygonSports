@@ -105,7 +105,7 @@ struct PostCardView: View {
             }
             Text("\(post.likedIDs.count)")
                 .font(.custom("LexendDeca-Regular", size: 16))
-                .foregroundColor(.gray)
+                .foregroundColor(.white)
             
             
             Button {
@@ -116,7 +116,7 @@ struct PostCardView: View {
             .padding(.leading, 25)
             
         }
-        .foregroundColor(.gray)
+        .foregroundColor(.white)
         .padding(.vertical, 0)
     }
     

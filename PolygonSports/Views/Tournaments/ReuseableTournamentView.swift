@@ -57,15 +57,17 @@ struct ReusableTournamentView: View {
     @ViewBuilder
     func Tournaments() -> some View {
         ForEach(tournaments) { tournament in
-            TournamentCardView(tournament: tournament) { updatedTournament in
-                if let index = tournaments.firstIndex(where: { post in
-                    post.id == updatedTournament.id
-                }) {
-                    tournaments[index].players = updatedTournament.players
-                }
-            } onDelete: {
-                withAnimation(.easeInOut(duration: 0.25)) {
-                    tournaments.removeAll {tournament == $0}
+            if tournament.tournamentDate >= Date() {
+                TournamentCardView(tournament: tournament) { updatedTournament in
+                    if let index = tournaments.firstIndex(where: { post in
+                        post.id == updatedTournament.id
+                    }) {
+                        tournaments[index].players = updatedTournament.players
+                    }
+                } onDelete: {
+                    withAnimation(.easeInOut(duration: 0.25)) {
+                        tournaments.removeAll {tournament == $0}
+                    }
                 }
             }
         }

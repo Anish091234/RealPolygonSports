@@ -15,8 +15,6 @@ struct MatchView: View {
     @State private var randomizedMatches:[String] = []
     @State private var IndividualPlayersMatches:[String] = []
     @State private var players: [String] = []
-    @State var Player1 = ""
-    @State var Player2 = ""
     @AppStorage("user_name") private var username: String = ""
     @AppStorage("account_child_name") var childName = ""
     @AppStorage("user_UID") private var userUID: String = ""
@@ -50,12 +48,14 @@ struct MatchView: View {
             
         }
         .task {
+                        
             if randomizedMatches.count == 0 {
                 await matches()
                 await getSubstring(matchConversion: randomizedMatches)
             } else  {
                 return
             }
+            
         }
     }
     
@@ -77,6 +77,8 @@ struct MatchView: View {
                 randomizedMatches.append(contentsOf: ["Match Between: \(fetchedPlayers[i]) and \(fetchedPlayers[i+1])"])
                 i+=1
             }
+            
+            randomizedMatches.append(contentsOf: ["Match Between: \(fetchedPlayers[0]) and \(fetchedPlayers[fetchedPlayers.count-1])"])
         } else {
             randomizedMatches.append(contentsOf: ["Odd Number Of Players 🙁"])
         }

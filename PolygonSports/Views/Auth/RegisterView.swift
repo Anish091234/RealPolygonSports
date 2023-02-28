@@ -12,6 +12,7 @@ import FirebaseFirestore
 import FirebaseStorage
 import PhotosUI
 import AuthenticationServices
+import FirebaseMessaging
 
 //MARK: Register View
 struct RegisterView: View {
@@ -23,6 +24,7 @@ struct RegisterView: View {
     @State var userBio: String = ""
     @State var userBioLink: String = ""
     @State var userProfilePicData: Data?
+    @State var firebaseToken: String = ""
     //MARK: View Properties
     @Environment(\.dismiss) var dismiss
     @Environment(\.colorScheme) var colorScheme
@@ -118,7 +120,6 @@ struct RegisterView: View {
             
             .frame(width: 85, height: 85)
             .clipShape(Circle())
-            //.contentShape(Circle())
             .onTapGesture {
                 showImagePicker.toggle()
             }
@@ -183,9 +184,17 @@ struct RegisterView: View {
                 guard let imageData = userProfilePicData else {return}
                 let storageRef = Storage.storage().reference().child("Profile_Images").child(userUID)
             
+                Messaging.messaging().token { token, error in
+                    if let error = error {
+                        print("Error fetching FCM registration token: \(error)")
+                    } else if let token = token {
+                        print("FCM registration token: \(token)")
+                        firebaseToken = token
+                    }
+                }
                 let _ = try await storageRef.putDataAsync(imageData)
                 let downloadURL = try await storageRef.downloadURL()
-                let user = User(username: userName, userBio: userBio, userBioLink: userBioLink, userUID: userUID, userEmail: emailID, userProfileURL: downloadURL, accountType: accountType1)
+                let user = User(username: userName, userBio: userBio, userBioLink: userBioLink, userUID: userUID, userEmail: emailID, userProfileURL: downloadURL, accountType: accountType1, firebaseMessageToken: firebaseToken)
                 let _ = try Firestore.firestore().collection("Users").document(userUID).setData(from: user, completion: { error in
                     if error == nil {
                         print("Saved Successfully")
@@ -259,8 +268,6 @@ struct RegisterView: View {
                 //self.didCompleteLoginProcess()
             }
     }
-    
-    
 }
 
 struct RegisterView_Previews: PreviewProvider {

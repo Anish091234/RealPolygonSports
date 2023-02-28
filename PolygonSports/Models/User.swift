@@ -18,6 +18,7 @@ struct User: Identifiable, Codable {
     var userEmail: String
     var userProfileURL: URL
     var accountType: String
+    var firebaseMessageToken: String
     
     enum CodingKeys: CodingKey {
         case id
@@ -28,6 +29,7 @@ struct User: Identifiable, Codable {
         case userEmail
         case userProfileURL
         case accountType
+        case firebaseMessageToken
     }
 }
 

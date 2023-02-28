@@ -13,27 +13,60 @@ struct GameCounter: View {
     var tournamentID: String
     var baseString: [String]
     var group: Int
-    @State var playerOneScore: Int = 0
-    @State var playerOneGameScore:[Int] = []
-    @State var playerOneCurrentGameScore: Int = 0
-    @State var playerTwoScore: Int = 0
-    @State var playerTwoCurrentGameScore: Int = 0
-    @State var playerTwoGameScore:[Int] = []
-    @State var gameNum: Int = 1
-    @State var playerOneGameCounterScore: Int = 0
-    @State var playerTwoGameCounterScore: Int = 0
-    @State var errorMessage: String = ""
-    @State var bString: String = ""
-    @State var player1: String = ""
-    @State var player2: String = ""
-    @State var winner: String = ""
-    @State var showError: Bool = false
-    @State var isLoading: Bool = false
-    
+    @AppStorage("user_UID") private var userUID: String = ""
+    @AppStorage("user_name") var userNameStored: String = ""
+    @State private var playerOneScore: Int = 0
+    @State private var playerOneGameScore:[Int] = []
+    @State private var playerOneCurrentGameScore: Int = 0
+    @State private var playerTwoScore: Int = 0
+    @State private var playerTwoCurrentGameScore: Int = 0
+    @State private var playerTwoGameScore:[Int] = []
+    @State private var gameNum: Int = 1
+    @State private var playerOneGameCounterScore: Int = 0
+    @State private var playerTwoGameCounterScore: Int = 0
+    @State private var errorMessage: String = ""
+    @State private var bString: String = ""
+    @State private var player1: String = ""
+    @State private var player2: String = ""
+    @State private var winner: String = ""
+    @State private var showError: Bool = false
+    @State private var isLoading: Bool = false
+    @State private var player2UID: String = ""
+    @State private var localMatchDocs: [UserMatchDoc] = []
+    @State private var doneWithGame: Bool = false
     var body: some View {
         VStack {
             VStack {
                 Spacer()
+                
+                //MARK: Player One Game Score
+                HStack {
+                    
+                    Text("Game Score: \(player1)")
+                        .font(.custom("LexendDeca-Regular", size: 18))
+                        .bold()
+                    
+                    Text("|")
+                        .font(.custom("LexendDeca-Regular", size: 18))
+                        .bold()
+                    
+                    ScrollView(.horizontal) {
+                        LazyHStack {
+                            ForEach(playerOneGameScore, id: \.self) { index in
+                                Text(String(index))
+                                    .font(.custom("LexendDeca-Regular", size: 18))
+
+                            }
+                        }
+                    }
+                }
+                .frame(height: 60)
+                .padding(.leading)
+                .padding(.trailing)
+                
+                Divider()
+                
+                //MARK: Player One Button
                 Button {
                     playerOneScore+=1
                 } label: {
@@ -60,22 +93,24 @@ struct GameCounter: View {
                             }
                         }))
                     
-                } // Player One Button
+                }
                 .padding()
                 
+                //MARK: Game Score - Players
                 HStack {
                     Text("Game Score: ")
                         .font(.custom("LexendDeca-Regular", size: 18))
-                    Text("Player 1 -  \(playerOneCurrentGameScore)")
+                    Text("\(player1) -  \(playerOneCurrentGameScore)")
                         .font(.custom("LexendDeca-Regular", size: 18))
                         .bold()
                     Text("|")
                         .font(.custom("LexendDeca-Regular", size: 18))
-                    Text("Player 2 - \(playerTwoCurrentGameScore)")
+                    Text("\(player2) - \(playerTwoCurrentGameScore)")
                         .font(.custom("LexendDeca-Regular", size: 18))
                         .bold()
                 }
                 
+                //MARK: Done with game + finished with all games
                 HStack {
                     Button {
                         if playerOneScore > playerTwoScore {
@@ -128,15 +163,18 @@ struct GameCounter: View {
                                 winner = player2
                             }
                             
+                            doneWithGame = true
+                            
                         } label: {
                             Text("Done With All Games")
                                 .font(.custom("LexendDeca-Regular", size: 18))
                         }
+                        .disabled(doneWithGame)
                         
                     }
                 }
                 
-                
+                //MARK: Player Two Button
                 Button {
                     playerTwoScore+=1
                 } label: {
@@ -162,8 +200,36 @@ struct GameCounter: View {
                                 playerTwoScore -= 1
                             }
                         }))
-                } // Player Two
+                }
                 .padding()
+                
+                Divider()
+                
+                //MARK: Player 2 Game Score
+                HStack {
+                    
+                    Text("Game Score: \(player2)")
+                        .font(.custom("LexendDeca-Regular", size: 18))
+                        .bold()
+                    
+                    Text("|")
+                        .font(.custom("LexendDeca-Regular", size: 18))
+                        .bold()
+                    
+                    ScrollView(.horizontal) {
+                        LazyHStack {
+                            ForEach(playerTwoGameScore, id: \.self) { index in
+                                Text(String(index))
+                                    .font(.custom("LexendDeca-Regular", size: 18))
+
+                            }
+                        }
+                    }
+                }
+                .frame(height: 60)
+                .padding(.leading)
+                .padding(.trailing)
+                
                 Spacer()
             }
             .overlay(content: {
@@ -175,34 +241,100 @@ struct GameCounter: View {
             if player1 == "" && player2 == "" {
                 getSubstring(passedString: baseString[0])
             }
+            
+            print("Before seachMatchesDoc(): \(localMatchDocs)")
+            
+            await searchMatchesDoc()
+            
+            print("After searchMatchesDoc():\(localMatchDocs)")
+            
+            await getPlayerTwoUID()
+            
+        }
+    }
+    
+    func searchMatchesDoc() async {
+        do {
+            
+            let documents = try await Firestore.firestore().collection("UserMatchDocs")
+                .getDocuments()
+            
+            let matchDocs = try documents.documents.compactMap { doc -> UserMatchDoc? in
+                try doc.data(as: UserMatchDoc.self)
+            }
+            
+            await MainActor.run(body: {
+                localMatchDocs = matchDocs
+                isLoading = false
+            })
+            
+        } catch {
+            print(error.localizedDescription)
         }
     }
     
     func setMatch() {
         Task {
             do {
-                let match = Match(matchID: UUID().uuidString, player1: player1, player2: player2, player1MatchScores: playerOneGameScore, player2MatchScores: playerTwoGameScore, tournamentID: tournamentID, isMatchStarted: true, winner: winner, playerOneGameScore: playerOneGameCounterScore, playerTwoGameScore: playerTwoGameCounterScore, group: group)
-                try await createDocumentAtFirebase(match)
+                var contains: Bool = false
+                
+                for docs in localMatchDocs {
+                    if docs.uid == userUID {
+                        contains = true
+                        print("i")
+                    }
+                }
+                
+                if contains == true { //MARK: MATCH DOCUMENT DOES EXIST (UPDATE)
+                    print("MATCH DOCUMENT DOES EXIST")
+                    
+                    let match = Match(matchID: (await randomString(length: 20)), player1: player1, player2: player2, player1MatchScores: playerOneGameScore, player2MatchScores: playerTwoGameScore, tournamentID: tournamentID, isMatchStarted: true, winner: winner, playerOneGameScore: playerOneGameCounterScore, playerTwoGameScore: playerTwoGameCounterScore, group: group)
+                    
+                    try await Firestore.firestore().collection("UserMatchDocs").document(userUID).updateData(
+                        ["match" : FieldValue.arrayUnion([match.matchID])]
+                    )
+                    
+                    try await Firestore.firestore().collection("UserMatchDocs").document(player2UID).updateData(
+                        ["match" : FieldValue.arrayUnion([match.matchID])]
+                    )
+                    
+                    try await createDocumentAtFirebase(match)
+                    
+                } else { //MARK: MATCH DOCUMENT DOES NOT EXIST (CREATE)
+                    print("NO MATCH DOCUMENT EXIST")
+                    
+                    let match = Match(matchID: (await randomString(length: 20)), player1: player1, player2: player2, player1MatchScores: playerOneGameScore, player2MatchScores: playerTwoGameScore, tournamentID: tournamentID, isMatchStarted: true, winner: winner, playerOneGameScore: playerOneGameCounterScore, playerTwoGameScore: playerTwoGameCounterScore, group: group)
+                    
+                    let matchDoc = UserMatchDoc(id: userUID, name: userNameStored, uid: userUID, match: [match.matchID], lastPlayedMatch: Date())
+                    
+                    let playerTwoMatchDoc = UserMatchDoc(id: player2UID, name: player2, uid: player2UID, match: [match.matchID], lastPlayedMatch: Date())
+                    
+                    try await createDocumentAtFirebase(match)
+                    try await createUserMatchDocumentAtFirebase(matchDoc, uid: userUID)
+                    try await createUserMatchDocumentAtFirebase(playerTwoMatchDoc, uid: player2UID)
+                }
             } catch {
                 await setError(error)
             }
         }
     }
     
+    func randomString(length: Int) async -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+    
     func getSubstring(passedString: String) {
-        print(passedString)
         let text = passedString
         let regex = /Match Between: (?<player1>\w+) and (?<player2>\w+)/
         if let match = text.firstMatch(of: regex) {
             player1 = String(match.player1)
-            player2 = String(match.player2)            
+            player2 = String(match.player2)
         }
-        
     }
     
     func createDocumentAtFirebase(_ match: Match) async throws {
         let doc = Firestore.firestore().collection("Match").document()
-        print(doc)
         let _ = try doc.setData(from: match, completion: { error in
             if error == nil {
                 isLoading = false
@@ -210,6 +342,40 @@ struct GameCounter: View {
                 updatedTournament.id = doc.documentID
             }
         })
+    }
+    
+    func createUserMatchDocumentAtFirebase(_ docs: UserMatchDoc, uid: String) async throws {
+        let doc = Firestore.firestore().collection("UserMatchDocs").document(uid)
+        
+        let _ = try doc.setData(from: docs, completion: { error in
+            if error == nil {
+                isLoading = false
+                var updatedTournament = docs
+                updatedTournament.id = doc.documentID
+            }
+        })
+    }
+    
+    func getPlayerTwoUID() async {
+        do {
+            let documents = try await Firestore.firestore().collection("Players")
+                .getDocuments()
+            
+            let fetchedPlayers = try documents.documents.compactMap { doc -> Player? in
+                try doc.data(as: Player.self)
+            }
+            
+            await MainActor.run(body: {
+                for player in fetchedPlayers {
+                    if player.name == player2 {
+                        player2UID = player.parentAccountUID
+                    }
+                }
+            })
+            
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     //MARK: Display Errors VIA Alert
@@ -221,7 +387,7 @@ struct GameCounter: View {
         })
     }
 }
-  
+
 struct GameCounter_Previews: PreviewProvider {
     static var previews: some View {
         GameCounter(tournamentID: "ifjwiofw", baseString: ["Match Between: Anish and Ishan"], group: 2)

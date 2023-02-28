@@ -19,7 +19,7 @@ struct MapView: View {
     @State var show: Bool = false
     @StateObject private var viewModel = ContentViewModel()
     @Binding var showMenu: Bool
-    
+    @State private var showSheet: Bool = false
     var body: some View {
         NavigationStack {
             ZStack {
@@ -44,12 +44,52 @@ struct MapView: View {
                 .symbolVariant(.fill)
                 .tint(.red)
                 .padding(.top, 500)
+                
+                Button {
+                    showSheet.toggle()
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                }
+                .modifier(customViewModifier(roundedCornes: 6, startColor: .teal, endColor: .indigo, textColor: .white))
+                .padding(.leading, 260)
+                .padding(.bottom, 620)
+                .padding()
+                
             }
         }
+        
         .overlay(LoadingView(show: $show))
         .task {
             show = true
             await fetchCenters()
+        }
+        .blurredSheet(.init(.ultraThinMaterial), show: $showSheet) {
+            
+        } content: {
+            VStack {
+                Text("Filters")
+                    .font(.custom("LexendDeca-Regular", size: 20))
+                    .bold()
+                    .padding()
+                
+                TextField("Search", text: $query)
+                    .modifier(customViewModifier(roundedCornes: 6, startColor: .teal, endColor: .indigo, textColor: .white))
+                    .padding()
+                
+                Button {
+                    print("Filtering")
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                }
+                .modifier(customViewModifier(roundedCornes: 6, startColor: .teal, endColor: .indigo, textColor: .white))
+                .padding(.leading, 260)
+                .padding(.bottom, 620)
+                .padding()
+                
+
+            }
+            //.presentationDetents([.large, .medium,.height(150)])
+
         }
     }
     func fetchCenters() async {

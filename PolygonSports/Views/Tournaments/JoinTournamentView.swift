@@ -89,51 +89,57 @@ struct JoinTournamentView: View {
             if playerAccountRegistered {
                 guard let tournamentID = tournament.id else {return}
                 if tournament.players.contains(userNameStored) {
-                    ///Leave the tournament
+                    //MARK: Leave the tournament
                     if intRating < tournament.group1End {
                         try await Firestore.firestore().collection("Tournaments").document(tournamentID).updateData([
                             "players" : FieldValue.arrayRemove([userNameStored]),
+                            "playersUID" : FieldValue.arrayRemove([userUID]),
                             "group1" : FieldValue.arrayRemove([userNameStored]),
-                            "playersUID" : FieldValue.arrayRemove([userUID])
+                            "group1UID" : FieldValue.arrayRemove([userUID])
                             ])
                     } else if intRating > tournament.group1End && intRating < tournament.group2End {
                         try await Firestore.firestore().collection("Tournaments").document(tournamentID).updateData([
                             "players" : FieldValue.arrayRemove([userNameStored]),
+                            "playersUID" : FieldValue.arrayRemove([userUID]),
                             "group2" : FieldValue.arrayRemove([userNameStored]),
-                            "playersUID" : FieldValue.arrayRemove([userUID])
+                            "group2UID" : FieldValue.arrayRemove([userUID])
                             ])
                     } else  {
                         try await Firestore.firestore().collection("Tournaments").document(tournamentID).updateData([
                             "players" : FieldValue.arrayRemove([userNameStored]),
+                            "playersUID" : FieldValue.arrayRemove([userUID]),
                             "group3" : FieldValue.arrayRemove([userNameStored]),
-                            "playersUID" : FieldValue.arrayRemove([userUID])
+                            "group3UID" : FieldValue.arrayRemove([userUID])
                             ])
                     }
 
                 } else {
-                    ///Join Tournament
+                    //MARK: Join Tournament
                     if intRating < tournament.group1End {
                         try await Firestore.firestore().collection("Tournaments").document(tournamentID).updateData([
                             "players" : FieldValue.arrayUnion([userNameStored]),
+                            "playersUID" : FieldValue.arrayUnion([userUID]),
                             "group1" : FieldValue.arrayUnion([userNameStored]),
-                            "playersUID" : FieldValue.arrayUnion([userUID])
+                            "group1UID" : FieldValue.arrayUnion([userUID])
                             ])
                     } else if intRating > tournament.group1End && intRating < tournament.group2End {
                         try await Firestore.firestore().collection("Tournaments").document(tournamentID).updateData([
                             "players" : FieldValue.arrayUnion([userNameStored]),
+                            "playersUID" : FieldValue.arrayUnion([userUID]),
                             "group2" : FieldValue.arrayUnion([userNameStored]),
-                            "playersUID" : FieldValue.arrayUnion([userUID])
+                            "group2UID" : FieldValue.arrayUnion([userUID])
                             ])
                     } else  {
                         try await Firestore.firestore().collection("Tournaments").document(tournamentID).updateData([
                             "players" : FieldValue.arrayUnion([userNameStored]),
+                            "playersUID" : FieldValue.arrayUnion([userUID]),
                             "group3" : FieldValue.arrayUnion([userNameStored]),
-                            "playersUID" : FieldValue.arrayUnion([userUID])
+                            "group3UID" : FieldValue.arrayUnion([userUID])
                             ])
                     }
                 }
             } else {
-                await setError("No Player Profile Set. Head to settings to set this up.")
+                await setError("No Player Profile Set. Head to Settings --> Manage Players.")
             }
         }
     }
@@ -152,20 +158,23 @@ struct JoinTournamentView: View {
                 if intRating < tournament.group1End {
                     try await Firestore.firestore().collection("Tournaments").document(tournamentID).updateData([
                         "players" : FieldValue.arrayRemove([childName]),
+                        "playersUID" : FieldValue.arrayRemove([childUID]),
                         "group1" : FieldValue.arrayRemove([childName]),
-                        "playersUID" : FieldValue.arrayRemove([childUID])
+                        "group1UID" : FieldValue.arrayRemove([childUID])
                         ])
                 } else if intRating > tournament.group1End && intRating < tournament.group2End {
                     try await Firestore.firestore().collection("Tournaments").document(tournamentID).updateData([
                         "players" : FieldValue.arrayRemove([childName]),
+                        "playersUID" : FieldValue.arrayRemove([childUID]),
                         "group2" : FieldValue.arrayRemove([childName]),
-                        "playersUID" : FieldValue.arrayRemove([childUID])
+                        "group2UID" : FieldValue.arrayRemove([childUID])
                         ])
                 } else  {
                     try await Firestore.firestore().collection("Tournaments").document(tournamentID).updateData([
                         "players" : FieldValue.arrayRemove([childName]),
+                        "playersUID" : FieldValue.arrayRemove([childUID]),
                         "group3" : FieldValue.arrayRemove([childName]),
-                        "playersUID" : FieldValue.arrayRemove([childUID])
+                        "group3UID" : FieldValue.arrayRemove([childUID])
                         ])
                 }
 
@@ -174,20 +183,23 @@ struct JoinTournamentView: View {
                 if intRating < tournament.group1End {
                     try await Firestore.firestore().collection("Tournaments").document(tournamentID).updateData([
                         "players" : FieldValue.arrayUnion([childName]),
+                        "playersUID" : FieldValue.arrayUnion([childUID]),
                         "group1" : FieldValue.arrayUnion([childName]),
-                        "playersUID" : FieldValue.arrayUnion([childUID])
+                        "group1UID" : FieldValue.arrayUnion([childUID])
                         ])
                 } else if intRating > tournament.group1End && intRating < tournament.group2End {
                     try await Firestore.firestore().collection("Tournaments").document(tournamentID).updateData([
                         "players" : FieldValue.arrayUnion([childName]),
+                        "playersUID" : FieldValue.arrayUnion([childUID]),
                         "group2" : FieldValue.arrayUnion([childName]),
-                        "playersUID" : FieldValue.arrayUnion([childUID])
+                        "group2UID" : FieldValue.arrayUnion([childUID])
                         ])
                 } else  {
                     try await Firestore.firestore().collection("Tournaments").document(tournamentID).updateData([
                         "players" : FieldValue.arrayUnion([childName]),
+                        "playersUID" : FieldValue.arrayUnion([childUID]),
                         "group3" : FieldValue.arrayUnion([childName]),
-                        "playersUID" : FieldValue.arrayUnion([childUID])
+                        "group3UID" : FieldValue.arrayUnion([childUID])
                         ])
                 }
             }
